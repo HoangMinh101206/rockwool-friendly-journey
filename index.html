@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#d9001b">
+<title>Friendly ROCKWOOL — Interactive Service Journey | CBS Case 2026</title>
+<style>
+:root{--red:#d80019;--deep:#b60018;--pink:#fff0f1;--yellow:#f8b92b;--navy:#233d67;--blue:#edf2fa;--ink:#17202c;--muted:#66717e;--line:#dfe4ed;--bg:#f4f6f9;--paper:#fff;--green:#187249;--mint:#eaf7ee;--shadow:0 9px 28px rgba(29,49,78,.06)}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--ink);line-height:1.46}button,select,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #67a4fe;outline-offset:2px}button:disabled{cursor:not-allowed;opacity:.5}.shell{max-width:1640px;min-height:100vh;margin:auto;padding:23px clamp(18px,3.35vw,55px) 30px;background:var(--paper)}
+.header{display:flex;align-items:center;justify-content:space-between;gap:18px}.branding{display:flex;align-items:center;gap:20px}.ribbon{width:55px;height:63px;border-radius:4px 4px 0 0;background:var(--red);color:white;font-size:26px;font-weight:850;display:grid;place-items:center;position:relative;flex-shrink:0}.ribbon:after{content:"";position:absolute;top:100%;left:0;border-top:16px solid var(--red);border-right:27.5px solid transparent;border-left:27.5px solid transparent}.header h1{font-size:clamp(23px,2.35vw,37px);line-height:1.1;letter-spacing:-.7px;margin:0}.header h1 span{font-weight:650}.header small{display:block;font-size:10px;font-weight:750;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}.brandword{font-weight:900;font-size:23px;letter-spacing:-.6px;color:var(--red);white-space:nowrap}.brandword small{font-size:10px;letter-spacing:.3px;color:#526277;margin:0 0 3px;font-weight:650;text-align:right}
+.hero{display:flex;justify-content:space-between;align-items:flex-end;gap:15px;margin:38px 0 18px}.hero .eyebrow{font-size:11px;font-weight:900;letter-spacing:1.2px;color:var(--red)}.hero h2{font-size:clamp(21px,2.1vw,32px);margin:2px 0 4px;letter-spacing:-.6px;line-height:1.17}.hero p{font-size:13px;color:var(--muted);margin:0;max-width:780px}.topactions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--line);background:white;color:var(--ink);padding:10px 14px;border-radius:9px;font-size:12px;font-weight:780;min-height:39px;transition:background .13s,border-color .13s}.btn:hover{background:#f7f8fb;border-color:#b5bfce}.btn.red{background:var(--red);color:white;border-color:var(--red)}.btn.red:hover{background:var(--deep)}.btn.navy{background:var(--navy);color:white;border-color:var(--navy)}.btn.gold{background:var(--yellow);border-color:var(--yellow);color:#252019}.btn.ghostred{color:var(--red);background:var(--pink);border-color:#ffd3d8}.btn.sm{padding:7px 10px;min-height:31px;font-size:11px}.kicker{display:inline-flex;background:var(--blue);color:var(--navy);padding:5px 10px;border-radius:99px;font-weight:790;font-size:10px;letter-spacing:.3px}.kicker.red{background:var(--pink);color:var(--deep)}
+.rolejourney{display:grid;grid-template-columns:4fr 2fr 1fr;gap:9px;margin-bottom:10px}.role{display:flex;align-items:center;gap:13px;border-radius:10px 10px 5px 5px;padding:10px 16px;background:#f1f3f7;color:#5a687a;min-width:0;border:1px solid var(--line)}.role.active{background:var(--navy);color:white;border-color:var(--navy)}.role.dis.active{background:var(--red);border-color:var(--red)}.role.ins.active{background:#f8bf45;color:#1f2630;border-color:#f8bf45}.role strong{font-size:13px}.role span{font-size:10px;opacity:.83;margin-left:auto}.role .iconic{font-size:18px;font-weight:900}
+.steprow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin:0 0 18px}.steptab{border:1px solid var(--line);background:#fbfcfd;text-align:left;border-radius:9px;padding:10px 10px 11px;min-height:73px;position:relative}.steptab:hover{border-color:#9cacc2}.steptab.active{background:#fff5f5;border:2px solid var(--red);padding:9px 9px 10px}.steptab.active.ins{background:#fffaf0;border-color:#f3b125}.steptab.done{background:#f4fbf6}.steptab .stno{display:inline-flex;justify-content:center;align-items:center;width:22px;height:22px;border-radius:50%;font-size:11px;font-weight:900;background:#e7ecf4;color:#425675;vertical-align:middle;margin-right:5px}.steptab.active .stno{background:var(--red);color:#fff}.steptab.active.ins .stno{background:#e6a200;color:#282019}.steptab.done .stno{background:var(--green);color:white}.steptab strong{font-size:11px;display:inline;line-height:1.1}.steptab .rolehint{display:block;font-size:10px;color:var(--muted);margin-top:8px}.workspace{display:grid;grid-template-columns:minmax(0,1.94fr) minmax(280px,.76fr);gap:16px;align-items:start}.panel{background:white;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}.stageheading{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px;background:#fbfcfe;border-bottom:1px solid var(--line)}.stageheading h3{font-size:21px;letter-spacing:-.4px;margin:0}.stageheading p{font-size:12px;color:var(--muted);margin:3px 0 0}.stagebody{padding:22px;min-height:490px}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:16px}.threecol{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.field{min-width:0}.field label{display:block;font-size:11px;font-weight:830;margin:0 0 6px;color:#3b4a5b}.field input,.field select,.field textarea{border:1px solid #cfd7e2;background:#fff;border-radius:8px;padding:10px 11px;width:100%;min-height:41px;font-size:12px;color:var(--ink)}.field textarea{min-height:72px;resize:vertical}.field .hint{margin-top:5px;color:var(--muted);font-size:10px}.sectiontitle{display:flex;gap:10px;align-items:center;justify-content:space-between;margin:19px 0 9px}.sectiontitle h4{margin:0;font-size:13px}.sectiontitle small{color:var(--muted);font-size:10px}.box{border:1px solid var(--line);border-radius:11px;padding:15px;background:white}.box.soft{background:#f8fafc}.box.blue{background:var(--blue);border-color:#d7e2f2}.box.redsoft{background:var(--pink);border-color:#fbd1d6}.box.goldsoft{background:#fff8e8;border-color:#f9dfa3}.box.greensoft{background:var(--mint);border-color:#bde4cc}.box p{margin:6px 0 0;font-size:12px;color:#526071}.box strong{font-size:13px}.box small{font-size:10px;color:var(--muted)}.bigmetric{font-size:30px;font-weight:900;letter-spacing:-.9px;margin:4px 0;line-height:1.12;color:var(--navy)}.bigmetric.red{color:var(--red)}.bigmetric.green{color:var(--green)}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:13px}.mini{padding:13px;border:1px solid var(--line);border-radius:10px;background:#fafbfc}.mini label{display:block;font-size:10px;color:var(--muted);font-weight:750}.mini b{font-size:21px;color:var(--navy)}.callout{padding:12px 14px;border-radius:9px;border-left:4px solid var(--navy);background:#f4f7fc;font-size:11px;color:#46566c;margin:14px 0}.callout.warn{border-color:#e0a31e;background:#fff8e7}.callout.red{border-color:var(--red);background:#fff1f2}.callout.green{border-color:var(--green);background:#eef8f1}.actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:22px;border-top:1px solid var(--line);padding-top:16px;flex-wrap:wrap}.actionright{display:flex;gap:8px;flex-wrap:wrap}.statusline{color:var(--muted);font-size:11px}.statusline strong{color:var(--green)}.data-list{list-style:none;padding:0;margin:0}.data-list li{display:flex;justify-content:space-between;align-items:start;gap:10px;padding:10px 0;border-bottom:1px solid #e8edf2;font-size:11px}.data-list li:last-child{border-bottom:0}.data-list li span{color:var(--muted)}.data-list li strong{text-align:right;max-width:58%}.pill{display:inline-block;background:#eff3f8;border-radius:99px;padding:3px 8px;color:#405773;font-size:10px;font-weight:850}.pill.ok{background:#e3f5e9;color:var(--green)}.pill.warn{background:#fff1d4;color:#8d5900}.pill.red{background:var(--pink);color:#ab1426}
+.alerts{border:1px solid #ffd4d8;border-radius:11px;overflow:hidden}.alerthead{background:var(--red);color:white;padding:10px 13px;font-size:12px;font-weight:850}.alertbody{padding:13px;background:#fff8f8;font-size:12px}.logrow{display:flex;align-items:start;gap:10px;margin:7px 0;padding:10px 11px;border:1px solid var(--line);border-radius:9px;background:#fff;font-size:12px}.logrow .dot{width:23px;height:23px;display:inline-grid;place-items:center;border-radius:50%;font-size:11px;color:white;background:var(--navy);flex-shrink:0;font-weight:800}.logrow .dot.ai{background:var(--red)}.logrow .dot.human{background:var(--green)}.logrow p{margin:2px 0 0;font-size:11px;color:var(--muted)}.choice{border:1.5px solid var(--line);border-radius:11px;background:white;text-align:left;padding:14px;flex:1;min-width:0}.choice.selected{background:#f1f5fa;border:2px solid var(--navy);padding:13px}.choice:hover{border-color:#a7b7cf}.choice h4{margin:5px 0;font-size:14px}.choice p{font-size:11px;color:var(--muted);margin:3px 0}.choice .price{font-size:20px;font-weight:850;color:var(--navy)}.choices{display:flex;gap:12px;margin-top:12px}.choicebadge{font-size:10px;font-weight:850;color:var(--deep);letter-spacing:.4px}.chekrow{display:flex;align-items:start;gap:9px;border:1px solid var(--line);padding:10px 12px;border-radius:9px;font-size:11px;margin:6px 0;cursor:pointer}.chekrow input{accent-color:var(--green);margin-top:3px}.chekrow b{display:block}.chekrow small{display:block;color:var(--muted);margin-top:1px;font-size:10px}.year-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px;margin-top:12px}.year{border-radius:10px;border:1px solid var(--line);padding:10px 8px;min-height:113px;background:#fcfdfe}.year .num{color:var(--red);font-weight:900;font-size:11px}.year strong{font-size:12px;display:block;margin-top:4px}.year p{font-size:10px;line-height:1.35;margin:3px 0;color:var(--muted)}.year:nth-child(4),.year:nth-child(5){background:#f8faff}.year:nth-child(6),.year:nth-child(7){background:#fffaf0}.terms{margin-top:12px;padding:12px 14px;background:#f9fbfd;border:1px solid var(--line);border-radius:10px;font-size:11px}.terms ul{margin:6px 0 0;padding-left:18px}.terms li{margin:4px 0}.costtable{width:100%;border-collapse:collapse;margin:12px 0;font-size:11px}.costtable th,.costtable td{border-bottom:1px solid #e3e8f0;padding:10px 9px;text-align:right}.costtable th:first-child,.costtable td:first-child{text-align:left}.costtable th{color:var(--muted);font-weight:800;background:#f6f8fb}.costtable td b{color:var(--navy)}.costtable .emph{background:#edf6ee}.costtable .emph td b{color:var(--green)}.flowbar{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.flowbar span{border:1px solid #d8e2f0;border-radius:99px;background:#f7faff;color:var(--navy);font-size:10px;font-weight:770;padding:6px 9px}.flowbar span:after{content:" →";color:var(--red);padding-left:5px}.flowbar span:last-child:after{content:""}.mobilewrap{display:grid;grid-template-columns:minmax(240px,.78fr) 1.22fr;gap:18px}.phone{margin:auto;max-width:280px;border:8px solid #2c3038;border-radius:32px;min-height:430px;padding:13px 13px 20px;background:white;box-shadow:0 12px 24px rgba(25,33,53,.1)}.notch{width:72px;height:13px;border-radius:99px;background:#22252c;margin:-5px auto 11px}.phonescreen small{font-size:9px;color:#697686}.phonebanner{background:#ffe5e8;color:#922037;padding:11px;border-radius:10px;font-size:14px;font-weight:900;text-align:center;margin:12px 0}.phone-item{border-bottom:1px solid var(--line);padding:11px 0;font-size:11px;display:flex;align-items:center;gap:7px;font-weight:800}.phone-item .round{width:17px;height:17px;border:1.5px solid #aeb9c8;border-radius:50%;display:inline-grid;place-items:center;flex-shrink:0;font-size:10px}.phone-item.complete{color:var(--green)}.phone-item.complete .round{color:#fff;background:var(--green);border-color:var(--green)}.prog{background:#e6ebf2;border-radius:99px;height:10px;overflow:hidden}.prog div{background:var(--green);height:100%;transition:width .2s}.assist{border:1px solid #d6e1ef;border-radius:9px;background:#f5f8fd;padding:11px;margin-top:10px;font-size:11px}.assist strong{font-size:12px}.notes{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:10px}.side{display:flex;flex-direction:column;gap:13px}.side .sidehead{padding:13px 16px;background:var(--navy);color:white;font-size:12px;font-weight:850}.side .sidehead.light{background:#f8fafc;color:var(--ink);border-bottom:1px solid var(--line)}.side .sidebody{padding:15px 16px}.side .sidetitle{font-size:11px;font-weight:850;margin:0 0 9px}.timeline{margin:0;padding:0;list-style:none}.timeline li{border-left:2px solid #e1e7ef;padding:2px 0 12px 13px;position:relative;font-size:11px}.timeline li:before{content:"";position:absolute;left:-5px;top:5px;width:8px;height:8px;border-radius:50%;background:#d0d9e6}.timeline li.on:before{background:var(--green)}.timeline li small{display:block;font-size:10px;color:var(--muted)}.timeline li:last-child{padding-bottom:0}.footer{margin-top:21px;border-top:1px solid #141920;padding-top:12px;display:flex;justify-content:space-between;align-items:start;gap:20px;color:var(--muted);font-size:10px}.footer b{color:var(--ink)}.snack{position:fixed;right:22px;bottom:19px;background:#273a57;color:white;padding:12px 15px;border-radius:10px;box-shadow:0 6px 18px #18263d44;max-width:420px;z-index:999;font-size:12px;display:none}.snack.show{display:block}.printonly{display:none}
+@media(max-width:1240px){.workspace{grid-template-columns:minmax(0,1fr) 290px}.steptab strong{font-size:10px}.year-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:950px){.workspace{grid-template-columns:1fr}.side{display:grid;grid-template-columns:1fr 1fr}.steprow{grid-template-columns:repeat(4,1fr)}.rolejourney{grid-template-columns:1fr 1fr 1fr}.role span{display:none}.threecol{grid-template-columns:1fr 1fr}}
+@media(max-width:670px){.header{align-items:start}.brandword{font-size:15px}.brandword small{font-size:8px}.branding{gap:12px}.ribbon{width:40px;height:46px;font-size:18px}.ribbon:after{border-top-width:12px;border-right-width:20px;border-left-width:20px}.hero{align-items:start;flex-direction:column;margin-top:28px}.rolejourney{grid-template-columns:1fr;gap:5px}.role{padding:7px 11px}.steprow{grid-template-columns:repeat(2,1fr)}.twocol,.threecol,.side,.metrics,.mobilewrap{grid-template-columns:1fr}.year-grid{grid-template-columns:repeat(2,1fr)}.choices{flex-direction:column}.stagebody{padding:15px}.stageheading{padding:14px 15px}.header h1{font-size:22px}}
+@media print{body{background:white}.shell{padding:8px}.topactions,.steprow,.actions,.rolejourney,.btn{display:none!important}.workspace{display:block}.side{display:none}.printonly{display:block}.stagebody{min-height:0}}
+
+/*
+ * FRIENDLY ROCKWOOL / UI REDESIGN
+ * Design inspiration: Unslop by Damir Sokolovsky (CC BY 4.0),
+ * and the user-supplied EvondevKit UI/UX guidelines.
+ * Self-contained; no external font, icon or network assets.
+ */
+:root {
+  --red:#D60020; --deep:#AD001B; --pink:#FFF4F4; --yellow:#F6B832;
+  --navy:#25364C; --blue:#F0F3F5; --ink:#20252B; --muted:#596470;
+  --line:#DFE4E5; --bg:#F4F5F3; --paper:#FFFFFF;
+  --green:#256B4D; --mint:#EAF5EF;
+  --shadow:0 2px 12px rgba(33,41,43,.025);
+  --radius:8px; --control:44px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:Arial,"Segoe UI",system-ui,sans-serif;color:var(--ink);font-size:14px;line-height:1.5;letter-spacing:0}
+button,select,input,textarea{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid rgba(214,0,32,.32);outline-offset:2px}
+button:disabled{cursor:not-allowed;opacity:.52}
+.shell{max-width:1584px;margin:0 auto;padding:0 32px 32px;background:transparent;min-height:100vh}
+.header{background:#fff;border-bottom:1px solid var(--line);margin:0 -32px;padding:20px 32px;min-height:86px;align-items:center;gap:24px}
+.branding{gap:16px}
+.ribbon{width:45px;height:48px;position:relative;background:var(--red);font-size:22px;font-weight:700;border-radius:3px 3px 0 0;letter-spacing:-.02em}
+.ribbon:after{border-top-width:12px;border-right-width:22.5px;border-left-width:22.5px}
+.header small,.brandword small{letter-spacing:.02em;font-size:11px;font-weight:500;text-transform:none;color:var(--muted);margin-bottom:4px}
+.header h1{font-size:24px;line-height:1.25;letter-spacing:-.035em;font-weight:700}
+.header h1 span{font-weight:500}
+.brandword{font-size:20px;font-weight:800;letter-spacing:-.045em;color:var(--red);display:flex;align-items:flex-end;flex-direction:column;line-height:1.1}
+.brandword small{text-align:right;font-weight:500;margin:0 0 8px}
+.brandmark{display:inline-flex;align-items:center;gap:6px}.brandmark svg{width:21px;height:21px;display:block}
+.hero{padding:36px 0 20px;margin:0;align-items:flex-end;gap:32px}
+.hero .eyebrow{font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:none;color:var(--red);margin-bottom:8px}
+.hero h2{font-size:clamp(27px,2.45vw,38px);letter-spacing:-.045em;line-height:1.16;font-weight:650;margin:0 0 9px;max-width:780px}
+.hero p{font-size:14px;line-height:1.55;max-width:780px;color:var(--muted);margin:0}
+.topactions{gap:8px;justify-content:flex-end;align-items:center;flex-shrink:0}
+.btn{font-size:13px;font-weight:650;border-radius:6px;padding:10px 15px;min-height:42px;border:1px solid #D7DEDE;box-shadow:none;transition:background-color .16s ease,border-color .16s ease,color .16s ease}
+.btn:hover{background:#EFF2F1;border-color:#BEC9CA}
+.btn.red{background:var(--red);border-color:var(--red);color:#fff}
+.btn.red:hover{background:var(--deep)}
+.btn.navy{background:var(--navy);border-color:var(--navy);color:#fff}
+.btn.navy:hover{background:#17283D}
+.btn.gold{background:#F5B72D;border-color:#F5B72D;color:#1E2329}
+.btn.gold:hover{background:#E9A818}
+.btn.ghostred{background:var(--pink);color:var(--red);border-color:#F4D6DC}
+.btn.sm{font-size:12px;min-height:34px}
+.rolejourney{display:grid;grid-template-columns:4fr 2fr 1.2fr;gap:0;overflow:visible;margin:5px 0 0;border:1px solid #DBE1E1;background:#fff;border-radius:8px 8px 0 0}
+.role{border:0;border-right:1px solid #E6E9E9;border-radius:0;background:#fff;padding:16px 20px;min-height:80px;color:var(--ink);display:flex;text-align:left;gap:12px;position:relative;align-items:center}
+.role:last-child{border-right:0}
+.role:after{content:"";position:absolute;height:3px;left:0;right:0;bottom:0;background:transparent}
+.role.active,.role.dis.active,.role.ins.active{background:#FBFBFA;color:var(--ink);border-color:#E6E9E9}
+.role.active:after,.role.dis.active:after{background:var(--red)}
+.role.ins.active:after{background:#DB9C19}
+.role:hover{background:#F7F8F7}
+.role .iconic{width:32px;height:32px;flex:0 0 32px;display:grid;place-items:center;background:#F3F5F4;border:1px solid #E8EBEA;border-radius:6px;color:var(--navy);font-size:14px;font-weight:700}
+.role.active .iconic{background:#FFF0F2;color:var(--red);border-color:#F5D2D8}
+.role.ins.active .iconic{background:#FFF4D7;color:#956500;border-color:#F7E7BB}
+.role .rolecopy{display:flex;flex-direction:column;min-width:0;gap:2px;align-items:flex-start}
+.role strong{font-size:14px;line-height:1.25;font-weight:700;white-space:normal}
+.role span.rolehintline{font-size:11px;color:var(--muted);opacity:1;margin:0;line-height:1.4;white-space:normal}
+.role .phaseindex{font-size:10px;letter-spacing:.04em;color:#879197;font-weight:700;margin:0}
+.steprowwrap{position:relative;margin-bottom:24px;border-radius:0 0 8px 8px;background:#fff;border:1px solid #DBE1E1;border-top:0}
+.steprow{display:grid;grid-template-columns:repeat(7,minmax(130px,1fr));gap:0;margin:0;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#CBD4D3 transparent}
+.steptab{padding:12px 14px;min-width:130px;min-height:66px;display:flex;align-items:flex-start;gap:9px;text-align:left;background:transparent;border:0;border-right:1px solid #EBEEEE;border-radius:0;transition:background-color .16s ease}
+.steptab:last-child{border-right:0}
+.steptab:hover{background:#F6F7F6;border:0;border-right:1px solid #EBEEEE}
+.steptab.active{background:#FFF7F7;border:0;border-right:1px solid #EBEEEE;border-bottom:2px solid var(--red);padding:12px 14px 10px}
+.steptab.active.ins{background:#FFF9EA;border-bottom-color:#E8A91E}
+.steptab.done{background:#F6FAF7}
+.steptab .stno{display:grid;place-items:center;flex:0 0 23px;width:23px;height:23px;border:1px solid #CDD6D5;border-radius:50%;font-size:12px;font-weight:650;color:#62716F;background:#fff;margin:0}
+.steptab.active .stno{background:var(--red);color:#fff;border-color:var(--red)}
+.steptab.active.ins .stno{background:#D99A14;color:#fff;border-color:#D99A14}
+.steptab.done .stno{background:var(--green);border-color:var(--green);color:#fff}
+.steptab .steplabel{display:flex;flex-direction:column;gap:4px;min-width:0}
+.steptab strong{font-size:12px;line-height:1.25;font-weight:650;display:block}
+.steptab .rolehint{font-size:11px;color:#737E86;margin:0;display:block}
+.scrollhint{display:none}
+.workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,325px);gap:20px;align-items:start}
+.panel{border-radius:8px;box-shadow:var(--shadow);border:1px solid #DFE4E5;background:#fff;overflow:hidden}
+.stageheading{padding:22px 26px 20px;background:#fff;border-bottom:1px solid #E5E9E8;gap:16px;align-items:center}
+.stageheading .stagepre{font-size:12px;font-weight:650;letter-spacing:.015em;color:var(--red);margin-bottom:6px}
+.stageheading h3{font-size:24px;font-weight:700;letter-spacing:-.035em;line-height:1.25;margin:0}
+.stageheading p{color:var(--muted);font-size:13px;margin:4px 0 0}
+.stagebody{padding:26px;min-height:515px}
+.kicker,.kicker.red{border-radius:5px;background:#F1F3F4;color:#63717B;border:1px solid #E4E8E7;font-size:11px;font-weight:650;padding:6px 9px;letter-spacing:0;flex-shrink:0}
+.kicker.red{background:#FFF2F3;color:var(--red);border-color:#F6DDE0}
+.twocol{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+.threecol{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.field label{font-size:12px;line-height:1.35;font-weight:650;margin-bottom:6px;color:#38434A}
+.field input,.field select,.field textarea{border:1px solid #D0D8D7;border-radius:6px;background:#fff;min-height:44px;padding:10px 12px;font-size:14px;color:var(--ink);box-shadow:none;transition:border-color .16s ease}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:#A8B6B3}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--red);outline:2px solid #F4D7DC;outline-offset:0}
+.field textarea{min-height:92px}
+.field .hint{font-size:11px;line-height:1.45;margin-top:6px;color:#68757D}
+.sectiontitle{margin:0 0 12px;gap:12px;align-items:center}
+.sectiontitle:not(:first-child){margin-top:24px}
+.sectiontitle h4{font-size:15px;font-weight:700;letter-spacing:-.01em;line-height:1.35;margin:0}
+.sectiontitle small{font-size:11px}
+.box{padding:16px;border-radius:7px;border:1px solid #E1E6E5;background:#fff}
+.box.soft{background:#F7F8F7;border-color:#E8EBEA}
+.box.blue{background:#F4F6F7;border-color:#E2E8E9}
+.box.redsoft{background:#FFF6F6;border-color:#F6E4E6}
+.box.goldsoft{background:#FFF8E8;border-color:#EBDDAF}
+.box.greensoft{background:#F0F8F3;border-color:#D4E7DA}
+.box p{font-size:13px;line-height:1.5;color:#596570}
+.box strong{font-size:14px;font-weight:700}
+.box small{font-size:11px;color:var(--muted)}
+.bigmetric{font-size:clamp(36px,3vw,51px);font-weight:750;letter-spacing:-.05em;line-height:1.05;color:var(--navy);font-variant-numeric:tabular-nums}
+.bigmetric.red{color:var(--red)} .bigmetric.green{color:var(--green)}
+.metrics{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:16px}
+.mini{padding:12px 10px;border:1px solid #E3E8E7;border-radius:6px;background:#fff;min-width:0}
+.mini label{font-size:11px;font-weight:550;color:var(--muted);line-height:1.35}
+.mini b{font-size:21px;letter-spacing:-.03em;color:var(--navy);font-weight:700;font-variant-numeric:tabular-nums}
+.callout{font-size:12px;line-height:1.55;background:#F5F7F8;border:0;border-left:3px solid #8A9AA3;border-radius:3px;padding:12px 14px;margin:16px 0;color:#4C5B66}
+.callout.warn{background:#FFF9EB;border-left-color:#D0A133;color:#615438}
+.callout.red{background:#FFF4F5;border-left-color:var(--red);color:#65424A}
+.callout.green{background:#F1F8F3;border-left-color:var(--green)}
+.alerts{border:1px solid #E9DADD;border-radius:7px;overflow:hidden;background:#FFF}
+.alerthead{background:#FFF4F5;border-bottom:1px solid #F1DDE0;color:#A80A22;font-size:12px;font-weight:650;padding:12px 16px}
+.alertbody{background:#fff;padding:18px}
+.logrow{border:1px solid #E3E8E7;border-radius:7px;padding:13px;gap:12px;margin:9px 0;background:#fff;font-size:13px;align-items:flex-start}
+.logrow .dot{width:28px;height:28px;flex:0 0 28px;font-size:11px;font-weight:700;background:var(--navy)}
+.logrow .dot.ai{background:var(--red)}
+.logrow .dot.human{background:var(--green)}
+.logrow p{font-size:12px;line-height:1.5;margin-top:4px;color:var(--muted)}
+.actions{padding-top:18px;margin-top:28px;border-top:1px solid #E6EAE9;gap:16px;flex-wrap:wrap}
+.actionright{gap:8px;flex-wrap:wrap}
+.statusline{font-size:12px;color:var(--muted)}
+.statusline strong{color:var(--green)}
+.data-list li{border-bottom:1px solid #EBEEEE;padding:10px 0;font-size:12px;gap:14px;line-height:1.4}
+.data-list li span{color:var(--muted)}
+.data-list li strong{max-width:60%;font-weight:650;color:#27323A;overflow-wrap:anywhere}
+.pill{background:#F1F3F3;color:#45545F;border-radius:4px;padding:4px 7px;font-size:11px;font-weight:650}
+.pill.ok{background:#EAF4ED;color:var(--green)}
+.pill.warn{background:#FCF1D5;color:#845C14}
+.pill.red{background:#FFF1F3;color:#AB0A23}
+.choices{gap:12px;margin-top:12px}
+.choice{padding:16px;border-radius:7px;border:1px solid #DCE3E2;transition:border-color .16s ease,background-color .16s ease}
+.choice:hover{border-color:#9CAEB0}
+.choice.selected{border:2px solid var(--red);padding:15px;background:#FFF8F8}
+.choice h4{font-size:15px;font-weight:700;margin:8px 0}
+.choice p{font-size:12px;line-height:1.5}
+.choice .price{color:#26394A;font-size:24px;font-weight:700;font-variant-numeric:tabular-nums}
+.choicebadge{font-size:11px;font-weight:650;letter-spacing:0;color:var(--red)}
+.chekrow{padding:12px 14px;border:1px solid #E1E6E5;border-radius:6px;margin:8px 0;gap:11px;font-size:13px;align-items:flex-start}
+.chekrow:hover{background:#F8F9F8;border-color:#C9D2D0}
+.chekrow input{accent-color:var(--red);width:16px;height:16px;margin-top:2px;flex:0 0 16px}
+.chekrow b{font-size:13px;font-weight:700;line-height:1.35}
+.chekrow small{font-size:12px;line-height:1.45;margin-top:3px}
+.year-grid{grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin-top:12px}
+.year{padding:12px 10px;min-height:144px;border-radius:6px;border-color:#DEE5E3;background:#fff}
+.year .num{font-size:11px;font-weight:700;color:var(--red)}
+.year strong{font-size:13px;font-weight:700;line-height:1.35;overflow-wrap:anywhere}
+.year p{font-size:11px;line-height:1.45;margin-top:6px}
+.year:nth-child(4),.year:nth-child(5){background:#F7F8F6}
+.year:nth-child(6),.year:nth-child(7){background:#FEFAEE}
+.terms{background:#F7F8F7;border:1px solid #E2E7E6;border-radius:7px;padding:16px 18px;font-size:13px;line-height:1.55}
+.terms ul{padding-left:20px;margin:8px 0 0}.terms li{margin:6px 0}
+.costtable{font-size:13px;margin:16px 0;width:100%}
+.costtable th,.costtable td{padding:12px 9px;border-bottom:1px solid #E5EBE9;line-height:1.4}
+.costtable th{background:#F6F8F7;color:#5E6971;font-weight:650}
+.costtable td b{color:var(--ink)}
+.costtable .emph{background:#F1F8F3}
+.costtable .emph td b{color:var(--green)}
+.flowbar{margin:16px 0;gap:8px}
+.flowbar span{background:#F5F7F7;border:1px solid #E3E8E7;color:#4D5E68;border-radius:4px;font-size:11px;font-weight:650;padding:8px 10px}
+.flowbar span:after{color:var(--red)}
+.phone{border:8px solid #252C32;border-radius:28px;box-shadow:0 14px 24px rgba(18,30,39,.09);min-height:458px}
+.notch{background:#22252B}
+.phonebanner{background:#FFF2F2;color:#BA0020;border-radius:5px;font-weight:750;font-size:15px}
+.phone-item{font-size:12px;font-weight:650;min-height:50px;padding:13px 0}
+.phone-item.complete{color:var(--green)}
+.prog{background:#E6EBEA;height:8px;border-radius:10px}
+.prog div{background:var(--green)}
+.assist{background:#F6F8F7;border:1px solid #DEE5E3;border-radius:6px;padding:14px;font-size:12px}
+.assist strong{font-size:13px}
+.side{display:flex;flex-direction:column;gap:12px;position:sticky;top:16px}
+.side .sidehead{font-size:12px;font-weight:700;letter-spacing:.01em;color:var(--ink);background:#F8F9F8;border-bottom:1px solid #E3E8E6;padding:15px 16px}
+.side .sidehead.primary{background:var(--navy);color:white;border-bottom-color:var(--navy)}
+.side .sidehead.light{background:#F8F9F8;color:var(--ink)}
+.side .sidebody{padding:15px 16px}
+.side .sidetitle{font-size:14px;font-weight:700;line-height:1.4;margin:0 0 10px}
+.side .box.blue{background:#F3F6F7;border:1px solid #DEE6E7}
+.side .box.blue .notes{font-size:11px}
+.side .box.blue>div:nth-child(2){font-size:23px!important;font-weight:700!important;color:var(--navy)!important;letter-spacing:-.035em}
+.side .box.blue>div:nth-child(3){font-size:12px!important}
+.side .callout{font-size:11px;line-height:1.45}
+.timeline li{font-size:12px;border-left-color:#D7E0DE;padding-bottom:13px}
+.timeline li:before{background:#CCD5D4}
+.timeline li.on:before{background:var(--red)}
+.timeline li small{font-size:11px}
+.footer{padding:20px 0 12px;margin-top:36px;border-top:1px solid #D8DEDD;gap:24px;font-size:11px;line-height:1.5;color:#69747D}
+.footer b{color:#33424C}
+.snack{background:#25364C;color:#fff;border-radius:6px;box-shadow:0 12px 28px rgba(20,30,35,.18);font-size:13px;padding:12px 16px}
+.notes{font-size:11px;color:var(--muted)}
+@media(max-width:1280px){
+ .workspace{grid-template-columns:minmax(0,1fr) 298px}
+ .year-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .rolejourney{grid-template-columns:3fr 2fr 1.5fr}
+ .role{padding:14px 13px}
+ .role span.rolehintline{font-size:10px}
+}
+@media(max-width:1050px){
+ .shell{padding:0 22px 28px}
+ .header{margin:0 -22px;padding:16px 22px}
+ .workspace{grid-template-columns:minmax(0,1fr)}
+ .side{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+ .side .panel:first-child{grid-row:span 2}
+ .rolejourney{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .steptab{min-width:134px}
+ .steprow{grid-template-columns:repeat(7,minmax(134px,1fr))}
+ .steprowwrap:after{content:"";position:absolute;right:0;top:0;bottom:0;width:25px;pointer-events:none;background:linear-gradient(90deg,transparent,#FFF);opacity:.9}
+ .scrollhint{display:block;font-size:11px;color:var(--muted);text-align:right;margin:-19px 0 12px}
+}
+@media(max-width:700px){
+ body{font-size:14px}
+ .shell{padding:0 16px 24px}
+ .header{margin:0 -16px;padding:12px 16px;min-height:72px;gap:10px}
+ .branding{gap:10px}
+ .header h1{font-size:17px;line-height:1.25}
+ .header h1 span{font-weight:550}
+ .header small{font-size:10px}
+ .brandword{font-size:14px}.brandword small{display:none}
+ .brandmark svg{width:15px;height:15px}
+ .ribbon{width:33px;height:35px;font-size:15px}.ribbon:after{border-top-width:8px;border-left-width:16.5px;border-right-width:16.5px}
+ .hero{padding:28px 0 18px;margin:0;display:flex;flex-direction:column;align-items:stretch;gap:18px}
+ .hero h2{font-size:28px;letter-spacing:-.04em;line-height:1.18}
+ .hero p{font-size:13px;line-height:1.55}
+ .topactions{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+ .btn{min-height:42px;padding:9px 11px;font-size:13px}
+ .rolejourney{display:flex;overflow-x:auto;scrollbar-width:thin;gap:0;overscroll-behavior-x:contain}
+ .role{min-width:210px;flex:0 0 210px;padding:12px 11px;min-height:72px}
+ .role .iconic{display:none}
+ .role strong{font-size:13px}
+ .role span.rolehintline{font-size:10px}
+ .steptab{min-width:128px;min-height:62px;padding:10px!important}
+ .steprow{grid-template-columns:repeat(7,128px)}
+ .steptab strong{font-size:12px}
+ .steptab .rolehint{font-size:11px}
+ .workspace{gap:16px}
+ .stageheading{padding:18px 16px;align-items:flex-start}
+ .stageheading h3{font-size:21px}
+ .stageheading p{font-size:12px}
+ .stageheading .kicker{display:none}
+ .stagebody{min-height:0;padding:16px}
+ .twocol,.threecol,.mobilewrap,.metrics,.side{grid-template-columns:1fr}
+ .twocol{gap:14px}
+ .metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .metrics .mini:last-child{grid-column:span 2}
+ .side{display:flex;flex-direction:column}
+ .field input,.field select,.field textarea{font-size:16px;min-height:44px}
+ .year-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .choices{flex-direction:column}
+ .stagebody .actions{display:flex;flex-direction:column;align-items:stretch;gap:12px}
+ .actionright{display:grid;grid-template-columns:1fr;gap:8px}
+ .actionright .btn{width:100%;min-height:44px}
+ .statusline{max-width:none}
+ .sectiontitle h4{font-size:15px}
+ .footer{flex-direction:column;gap:8px}
+ .mobilewrap{gap:20px}
+ .phone{max-width:270px}
+ .costtable{font-size:12px}
+}
+@media(max-width:390px){
+ .shell{padding:0 12px 20px}
+ .header{margin:0 -12px;padding:12px}
+ .header h1{font-size:15px}
+ .brandword{font-size:12px}
+ .hero h2{font-size:25px}
+ .role{min-width:190px;flex-basis:190px}
+ .metrics{grid-template-columns:1fr}
+ .metrics .mini:last-child{grid-column:auto}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+@media print{.topactions,.steprowwrap,.rolejourney,.actions{display:none!important}.shell{padding:8px}.header{margin:0}.workspace{display:block}.side{display:none}}
+/* Alignment correction: original prototype applies auto margins to every role span. */
+.role .iconic,.role .rolecopy,.role .phaseindex,.role .rolehintline{margin-left:0}
+.role .rolecopy{flex:1}
+
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="header"><div class="branding"><div class="ribbon">05</div><div><small>CBS Global 2026 · Interactive concept</small><h1>Solution II: <span>A Friendly ROCKWOOL</span></h1></div></div><div class="brandword"><small>Case prototype · Denmark GBI</small><span class="brandmark"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M2 20L10.5 4h5.3L22 20h-5.2L13 11l-4.9 9H2Z" fill="currentColor"/></svg>ROCKWOOL</span></div></header>
+<section class="hero"><div><div class="eyebrow">Contractor → Distributor sales → Installer</div><h2>From a site shortage to a confident installation.</h2><p>Experience seven connected services in one project. Review the AI material alert, arrange fulfilment and documentation, agree distributor terms, then complete the installation handover.</p></div><div class="topactions"><button class="btn" data-act="reset">Reset demo</button><button class="btn navy" data-act="export">Export record</button></div></section>
+<nav class="rolejourney" aria-label="Customer journey actors">
+<button type="button" class="role con active" id="role0" data-act="go" data-value="0" aria-label="Go to Contractor phase"><span class="iconic" aria-hidden="true">01</span><span class="rolecopy"><span class="phaseindex">PHASE 01</span><strong>Contractor</strong><span class="rolehintline">Forecast · Cut to fit · Rockcycle · Compliance</span></span></button>
+<button type="button" class="role dis" id="role1" data-act="go" data-value="4" aria-label="Go to Distributor sales phase"><span class="iconic" aria-hidden="true">02</span><span class="rolecopy"><span class="phaseindex">PHASE 02</span><strong>Distributor sales</strong><span class="rolehintline">7-year offtake · SKU Advisor</span></span></button>
+<button type="button" class="role ins" id="role2" data-act="go" data-value="6" aria-label="Go to Installer phase"><span class="iconic" aria-hidden="true">03</span><span class="rolecopy"><span class="phaseindex">PHASE 03</span><strong>Installer</strong><span class="rolehintline">Install guide · Feedback</span></span></button>
+</nav>
+<div class="steprowwrap"><nav class="steprow" aria-label="Journey service moments" id="steps"></nav></div><div class="scrollhint">Scroll steps sideways to explore all seven services →</div>
+<main class="workspace"><section class="panel" aria-label="Current service workflow"><div id="stageHeader"></div><div class="stagebody" id="stageBody"></div></section><aside class="side"><div class="panel"><div class="sidehead primary">Live project record <span id="liveCode" style="float:right;opacity:.75"></span></div><div class="sidebody" id="record"></div></div><div class="panel"><div class="sidehead light">Why this matters to ROCKWOOL</div><div class="sidebody" id="commercial"></div></div><div class="panel"><div class="sidehead light">Project activity</div><div class="sidebody" id="activity"></div></div></aside></main>
+<footer class="footer"><div><b>Concept simulation, not a live ROCKWOOL system.</b> All quantities, prices, products, delivery statuses, financial terms and outcomes are illustrative. No automatic BR18 compliance, technical approval, actual order, financing or contract is created.</div><div>Grounded in team solutions and CBS ROCKWOOL case pp. 27, 31–36, 38–43. <b>Illustrative assumptions only.</b><br><small>Interface direction: Unslop by Damir Sokolovsky (CC BY 4.0) and EvondevKit.</small></div></footer></div>
+<div class="snack" id="toast" role="status" aria-live="polite"></div>
+<script>
+'use strict';
+const byId=x=>document.getElementById(x);
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=n=>'€'+Number(n||0).toLocaleString('en-IE',{maximumFractionDigits:0});
+const num=n=>Number(n||0).toLocaleString('en-IE',{maximumFractionDigits:0});
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,Number(v)||0));
+const steps=[
+ {short:'AI shortage',name:'Human + AI shortage forecasting',role:0,sub:'Contractor · demand visibility'},
+ {short:'Cut-to-fit',name:'Factory cut-to-fit & delivery plan',role:0,sub:'Contractor · fulfillment response'},
+ {short:'Rockcycle',name:'Rockcycle backhaul',role:0,sub:'Contractor · materials return'},
+ {short:'Compliance',name:'Compliance-as-a-Service',role:0,sub:'Contractor · documentation'},
+ {short:'7-year offtake',name:'Seven-year distributor offtake',role:1,sub:'Distributor · commercial partnership'},
+ {short:'SKU Advisor',name:'Green SKU Advisor & order conversion',role:1,sub:'Distributor · recommendation and sale'},
+ {short:'Install',name:'Installer Assist',role:2,sub:'Installer · job-site experience'}
+];
+let s;
+function fresh(){return {step:0,project:{id:'DEMO-0042',site:'North Harbour Renovation',segment:'Residential renovation',area:900,stock:320,incoming:320,buffer:10,days:6,scenario:'Base plan',fire:true,acoustic:true,thermal:false,notes:'Phased internal partition works'},forecast:{confirmed:false,qty:null},cut:{width:600,length:1200,bay:600,waste:4,prep:3,ship:2,approved:false},cycle:{offcuts:1300,returnCapacity:1500,eligible:95,scheduled:false},docs:{selected:[true,true,true,true,true],built:false},offtake:{historic:5200,minimum:70,upfront:6,rebate:9,greenGrowth:25,created:false},sku:{selected:'stone',premium:6,area:350,labourRw:17,labourAlt:22,wasteRw:2,wasteAlt:4,quote:false,ordered:false},install:{tasks:[false,false,false,false],issue:'None',feedback:'',submitted:false},events:[{text:'Illustrative project created',at:'Start'}]}}
+s=fresh();
+function fire(text){s.events.unshift({text,at:['Forecast','Cut-to-fit','Rockcycle','Compliance','Offtake','SKU','Install'][s.step]});if(s.events.length>18)s.events.length=18;toast(text)}
+function toast(txt){const el=byId('toast');el.textContent=txt;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),2800)}
+function demandScenario(){return s.project.area*(s.project.scenario==='Demand surge (+15%)'?1.15:1)}
+function inboundScenario(){return s.project.incoming*(s.project.scenario==='Inbound delay (50%)'?0.5:1)}
+function shortage(){return Math.max(0,Math.ceil(demandScenario()*(1+s.project.buffer/100)-s.project.stock-inboundScenario()-1e-8))}
+function approvedShort(){return Math.max(0,s.forecast.qty===null?shortage():s.forecast.qty)}
+function panelArea(){return Math.max(.001,s.cut.width*s.cut.length/1e6)}
+function pieces(){return Math.ceil(approvedShort()/panelArea()*(1+s.cut.waste/100))}
+function recovery(){return Math.min(s.cycle.returnCapacity,Math.round(s.cycle.offcuts*s.cycle.eligible/100))}
+function installedCosts(){const p=s.sku;const mat=42*(1+p.premium/100);return {rw:mat+p.labourRw+p.wasteRw,alt:42+p.labourAlt+p.wasteAlt,mat}}
+function greenSchedule(){const o=s.offtake;const base=o.historic, min=base*o.minimum/100;const values=[];for(let i=0;i<7;i++){let vol,share,tag,targetGreen=null;if(i<3){vol=Math.round(min);share=[20,35,50][i];tag='Ramp green share'}else if(i<5){vol=Math.round(min);share=null;targetGreen=Math.round(min*.5*Math.pow(1+o.greenGrowth/100,i-2));tag='Green purchases +'+o.greenGrowth+'% / year'}else{vol=Math.round(min);share=null;tag='Review / renew'}values.push({year:2027+i,vol,share,tag,targetGreen})}return values}
+function isDone(i){return [s.forecast.confirmed,s.cut.approved,s.cycle.scheduled,s.docs.built,s.offtake.created,s.sku.ordered,s.install.submitted][i]}
+function nav(i){s.step=clamp(i,0,6);render();const target=document.querySelector('.steprowwrap');if(target){target.querySelector('.steptab.active')?.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}if(window.innerWidth>700) window.scrollTo({top:0,behavior:'smooth'});else document.querySelector('.workspace')?.scrollIntoView({behavior:'smooth',block:'start'});}
+function hbutton(label,act,style='red',extra=''){return `<button class="btn ${style}" data-act="${act}" ${extra}>${label}</button>`}
+function field(label,key,value,type='number',opts={}){const hint=opts.hint?`<div class="hint">${esc(opts.hint)}</div>`:'';if(opts.select)return `<div class="field"><label>${esc(label)}</label><select data-field="${key}">${opts.select.map(v=>`<option ${String(v)===String(value)?'selected':''} value="${esc(v)}">${esc(v)}</option>`).join('')}</select>${hint}</div>`;return `<div class="field"><label>${esc(label)}</label><input data-field="${key}" type="${type}" value="${esc(value)}" ${type==='number'?`min="${opts.min??0}" max="${opts.max??999999}" step="${opts.step??1}"`:''}>${hint}</div>`}
+function foot(lead,action,text){return `<div class="actions"><div class="statusline">${lead}</div><div class="actionright">${s.step>0?hbutton('← Back','prev',''):''}${action?hbutton(text,action,s.step===6?'gold':'red'):''}${s.step<6?hbutton('Next service →','next','navy'):''}</div></div>`}
+function stage0(){const x=shortage(),q=approvedShort(),p=s.project;return `<div class="twocol"><div><div class="sectiontitle"><h4>Site manager's material plan</h4><small>Editable demo inputs</small></div><div class="twocol">${field('Project / site','project.site',p.site,'text')}${field('Project type','project.segment',p.segment,'text')}</div><div class="threecol" style="margin-top:13px">${field('Planned requirement (m²)','project.area',p.area)}${field('On-site stock (m²)','project.stock',p.stock)}${field('Confirmed inbound (m²)','project.incoming',p.incoming)}</div><div class="twocol" style="margin-top:13px">${field('Safety buffer (%)','project.buffer',p.buffer,'number',{max:100})}${field('Next work package starts (days)','project.days',p.days,'number',{max:365})}</div><div style="margin-top:12px">${field('AI planning stress-test','project.scenario',p.scenario,'text',{select:['Base plan','Demand surge (+15%)','Inbound delay (50%)'],hint:'Simulate a change to demand or an inbound delay; not a trained AI prediction'})}</div><div class="callout">Human-in-the-loop: the system flags a possible shortage; the site manager checks actual stock, changing site needs and confirmed orders before taking action.</div></div><div><div class="sectiontitle"><h4>AI material-watch console</h4><span class="kicker red">SIMULATED FORECAST</span></div><div class="alerts"><div class="alerthead">${x?'⚠ Predicted material gap':'✓ No current material gap'} · work package in ${num(p.days)} days</div><div class="alertbody"><div class="bigmetric red">${num(x)} m²</div><div class="notes">Scenario: ${esc(p.scenario)} · adjusted requirement − effective available stock</div><div class="metrics"><div class="mini"><label>Requirement + buffer</label><b>${num(Math.ceil(demandScenario()*(1+p.buffer/100)-1e-8))}</b></div><div class="mini"><label>Available + inbound</label><b>${num(p.stock+inboundScenario())}</b></div><div class="mini"><label>Confidence</label><b style="font-size:14px">Review</b></div></div></div></div><div class="logrow"><span class="dot ai">AI</span><div><b>Potential shortage detected</b><p>Signal is based on entered figures only. No live inventory connection, trained prediction model or guaranteed 2-hour notification SLA.</p></div></div><div class="logrow"><span class="dot human">H</span><div><b>Human verification</b><p>Adjust the verified gap before sending a request to ROCKWOOL's planning / distribution teams.</p></div></div><div class="twocol">${field('Site-manager confirmed gap (m²)','forecast.qty',q,'number',{hint:'Can differ from calculated forecast after site check'})}<div class="field"><label>Planning decision</label><div class="box ${s.forecast.confirmed?'greensoft':'soft'}"><strong>${s.forecast.confirmed?'✓ Validated, request raised':'Pending human confirmation'}</strong><p>${s.forecast.confirmed?num(q)+' m² shared for fulfillment planning.':'Click confirm to create a shortage-response request.'}</p></div></div></div></div></div>${foot(s.forecast.confirmed?'<strong>Human confirmed</strong> · shortage response recorded':'Awaiting site-manager approval','confirmForecast','Confirm shortage & request response →')}`}
+function stage1(){const c=s.cut,arr=pieces(),qty=approvedShort(),lead=Number(c.prep)+Number(c.ship),inTime=lead<=s.project.days;return `<div class="twocol"><div><div class="sectiontitle"><h4>Pre-cut at factory · existing stone wool products</h4><span class="kicker">Project-specific dimensions</span></div><div class="box soft"><div class="data-list"><li><span>Request from contractor</span><strong>${num(qty)} m² replacement coverage</strong></li><li><span>Site / project</span><strong>${esc(s.project.site)}</strong></li><li><span>Human-approved forecast</span><strong>${s.forecast.confirmed?'Yes':'Not yet — sample figure'}</strong></li></div></div><div class="twocol" style="margin-top:13px">${field('Product board width (mm)','cut.width',c.width,'number',{min:1,max:3000})}${field('Product board length (mm)','cut.length',c.length,'number',{min:1,max:4000})}${field('Wall bay / required fit (mm)','cut.bay',c.bay,'number',{min:1,max:3000})}${field('Planning allowance (%)','cut.waste',c.waste,'number',{min:0,max:30})}</div><div class="twocol" style="margin-top:12px">${field('Factory preparation (days)','cut.prep',c.prep,'number',{max:100})}${field('Shipping / delivery (days)','cut.ship',c.ship,'number',{max:100})}</div><div class="callout ${inTime?'green':'warn'}"><b>${inTime?'Timing feasible on entered assumptions':'Timing risk: estimated delivery misses work start'}.</b> ${lead} days of preparation + shipping against ${s.project.days} days until the work package starts. These are inputs, not ROCKWOOL delivery promises.</div><div class="callout warn">Feasibility gate: special dimensions and pre-cutting are subject to factory capabilities, fire/acoustic system approvals, cut list validation, partner availability and confirmed lead times.</div></div><div><div class="sectiontitle"><h4>Material response plan</h4><span class="kicker red">DEMO CALCULATION</span></div><div class="box blue"><small>Illustrative pre-cut lot size</small><div class="bigmetric">${num(arr)} boards</div><p>${c.width} × ${c.length} mm per board · ${panelArea().toFixed(2)} m² coverage each</p></div><div class="metrics"><div class="mini"><label>Confirmed gap</label><b>${num(qty)} <small>m²</small></b></div><div class="mini"><label>Fit</label><b style="font-size:15px">${c.width===c.bay?'Exact bay':'Check cut'}</b></div><div class="mini"><label>Delivery</label><b style="font-size:15px">${inTime?'On time*':'At risk'}</b></div></div><div class="flowbar"><span>Cut-list review</span><span>Factory pre-cut</span><span>Consolidate order</span><span>Ship via channel</span></div><div class="box ${c.approved?'greensoft':'soft'}"><strong>${c.approved?'✓ Cut-list request recorded':'Awaiting technical / factory approval'}</strong><p>This is a request for a cut-to-fit delivery, not confirmation of real production capacity or shipment.</p></div></div></div>${foot(c.approved?'<strong>Approved for demo workflow</strong> · fulfillment handover prepared':'Technical feasibility must be checked','approveCut','Create pre-cut request →')}`}
+function stage2(){const c=s.cycle,r=recovery();return `<div class="twocol"><div><div class="sectiontitle"><h4>Integrate Rockcycle into the delivery route</h4><span class="kicker">Eligible stone wool only</span></div><div class="twocol">${field('Estimated leftover stone wool (kg)','cycle.offcuts',c.offcuts)}${field('Eligible material estimate (%)','cycle.eligible',c.eligible,'number',{max:100})}${field('Available return capacity (kg)','cycle.returnCapacity',c.returnCapacity)}<div class="box soft"><strong>Return flow</strong><p>Truck / recycling partner collects eligible offcuts after delivery, if approved by logistics and recycling partners.</p></div></div><div class="callout warn">Do not mix general construction waste into Rockcycle estimates. Sorting, acceptance criteria, recycling partners and route economics must be validated; a return journey does not guarantee free collection.</div></div><div><div class="sectiontitle"><h4>Backhaul simulator</h4><span class="kicker red">ROUTE PROPOSAL</span></div><div class="box blue"><small>Potential eligible material recovered</small><div class="bigmetric">${num(r)} kg</div><p>${num(c.offcuts)} kg estimated offcuts × ${c.eligible}% eligible, capped by ${num(c.returnCapacity)} kg return capacity.</p></div><div class="flowbar"><span>Material delivery</span><span>Sort eligible offcuts</span><span>Partner collection</span><span>Process / recycle</span></div><div class="box ${c.scheduled?'greensoft':'soft'}"><strong>${c.scheduled?'✓ Backhaul request saved':'Awaiting route / partner review'}</strong><p>${c.scheduled?'A proposed pickup has been added to the same project.':'Save this as a proposed, not confirmed, reverse-logistics arrangement.'}</p></div></div></div>${foot(c.scheduled?'<strong>Collection request recorded</strong> · illustrative route':'Rockcycle is an optional value-added service','scheduleCycle','Request Rockcycle collection →')}`}
+function stage3(){const titles=['Fire classification / tested assembly','Acoustic performance evidence','Product EPD / LCA data','Dimensional and installation guidance','Project / batch documentation'];const docs=s.docs;return `<div class="twocol"><div><div class="sectiontitle"><h4>Compliance-as-a-Service</h4><span class="kicker">Documentation assistant</span></div><p style="font-size:12px;color:var(--muted)">Choose the materials that the contractor wants for design review, project documentation and sign-off support.</p>${titles.map((t,i)=>`<label class="chekrow"><input type="checkbox" data-field="docs.selected.${i}" ${docs.selected[i]?'checked':''}><span><b>${t}</b><small>${['For a verified approved assembly, not any individual board','Construction-level performance evidence','Product-level data, not building approval','Use current published installation instructions','For a documented procurement / delivery trail'][i]}</small></span></label>`).join('')}<div class="callout warn"><b>BR18 boundary:</b> building-level climate and other compliance obligations are assessed for the relevant project. EPDs, product tests and this tool do not by themselves certify BR18 compliance.</div></div><div><div class="sectiontitle"><h4>Project evidence pack</h4><span class="kicker red">DRAFT ONLY</span></div><div class="box blue"><strong>Project reference · ${esc(s.project.id)}</strong><p>${esc(s.project.site)} · ${esc(s.project.segment)}</p><div class="data-list" style="margin-top:10px">${titles.map((t,i)=>docs.selected[i]?`<li><span>${t}</span><strong>${docs.built?'<span class="pill warn">Verification needed</span>':'Request'}</strong></li>`:'').join('')}</div></div><div class="box ${docs.built?'greensoft':'soft'}" style="margin-top:12px"><strong>${docs.built?'✓ Evidence checklist assembled':'Evidence checklist not assembled'}</strong><p>Outputs indicate which certified documents must be located and reviewed, not fabricated certifications or completed BR18 assessments.</p></div><div class="callout red">Commercial impact: reduce the time needed to gather credible product information and lower friction for contractors evaluating premium insulation.</div></div></div>${foot(docs.built?'<strong>Evidence checklist ready</strong> · technical review required':'Product data ≠ project certification','buildDocs','Build evidence checklist →')}`}
+function stage4(){const o=s.offtake,arr=greenSchedule();return `<div><div class="sectiontitle"><h4>Partnership structure · 2027–2033</h4><span class="kicker red">ILLUSTRATIVE, SUBJECT TO LEGAL REVIEW</span></div><div class="callout warn">The case measures revenue impact only through 2030. This 7-year agreement extends beyond the case horizon and is a proposed commercial concept, <b>not</b> an existing ROCKWOOL programme. Commitments should be non-exclusive, voluntary and competition-law reviewed.</div><div class="threecol">${field('Historical annual purchases (m²)','offtake.historic',o.historic)}${field('Initial minimum commitment (%)','offtake.minimum',o.minimum,'number',{max:100})}${field('Y4–Y5 green purchase growth (%)','offtake.greenGrowth',o.greenGrowth,'number',{min:0,max:100})}</div><div class="twocol" style="margin-top:12px">${field('Illustrative upfront discount (%)','offtake.upfront',o.upfront,'number',{max:30})}${field('Conditional performance rebate cap (%)','offtake.rebate',o.rebate,'number',{max:30})}</div><div class="sectiontitle"><h4>Seven-year milestone view</h4><small>Source: team slide proposal · editable assumptions</small></div><div class="year-grid">${arr.map((v,i)=>`<div class="year"><div class="num">YEAR ${i+1} · ${v.year}</div><strong>${i<3?'≥ '+num(v.vol)+' m²':i<5?'≥ '+num(v.targetGreen)+' m² green':'Reassess / renew'}</strong><p>${i<3?`Green SKU target: ${v.share}% of committed annual volume`:i<5?'Green purchases growing '+o.greenGrowth+'% year-on-year from 2029 baseline':'Volume based on negotiated rolling five-year history'}</p></div>`).join('')}</div><div class="terms"><b>Proposed protections</b><ul><li>Non-exclusive commercial commitments, without tying products or prohibiting competing materials.</li><li>Volume carry-over and transparent index-based price adjustment are options, not guaranteed rights.</li><li>Rebates depend on verified purchases and margin approval; ${o.upfront}% upfront + up to ${o.rebate}% additional incentives must pass profitability checks.</li><li>Any third-party invoice financing would require separate bank approval and is excluded from this demo.</li></ul></div><div class="box ${o.created?'greensoft':'soft'}" style="margin-top:12px"><strong>${o.created?'✓ Draft term sheet recorded':'Commercial term sheet not drafted'}</strong><p>${o.created?'Distributor can continue to SKU Advisor for a simulated order.':'Use the controls above to test commitment and discount assumptions.'}</p></div>${foot(o.created?'<strong>Draft only</strong> · competition-law and margin review pending':'Discounts are not assumed to be profitable','createOfftake','Create draft offtake terms →')}</div>`}
+function stage5(){const p=s.sku,calc=installedCosts(),best=calc.rw<=calc.alt;return `<div class="twocol"><div><div class="sectiontitle"><h4>Green SKU Advisor · distributor sales</h4><span class="kicker">MATCH → PROVE → CONVERT</span></div><div class="box soft"><div class="data-list"><li><span>Project</span><strong>${esc(s.project.site)}</strong></li><li><span>Requested material</span><strong>${num(approvedShort())} m² potential gap</strong></li><li><span>Cut-to-fit plan</span><strong>${s.cut.approved?num(pieces())+' requested boards':'Review required'}</strong></li><li><span>Evidence pack</span><strong>${s.docs.built?'Checklist prepared':'Not yet prepared'}</strong></li><li><span>Offtake status</span><strong>${s.offtake.created?'Draft terms available':'No draft'}</strong></li></div></div><div class="sectiontitle"><h4>Illustrative product choice</h4><small>No live product catalogue</small></div><div class="choices"><button class="choice ${p.selected==='stone'?'selected':''}" data-act="chooseSku" data-value="stone"><span class="choicebadge">OPTION A · ROCKWOOL</span><h4>Stone wool partition solution</h4><div class="price">${money(calc.mat)}<small> / m² material</small></div><p>Evidence-backed assembly review required. Existing GBI product concept, not an actual SKU.</p></button><button class="choice ${p.selected==='alt'?'selected':''}" data-act="chooseSku" data-value="alt"><span class="choicebadge">OPTION B · ALTERNATIVE</span><h4>Generic lower-cost material</h4><div class="price">€42<small> / m² material</small></div><p>Equivalent performance is not assumed. Technical screening needed before substitution.</p></button></div><div class="callout">Distributor sales can use verified test / EPD information and applicable assembly details to justify a premium — not just claim all stone wool is lower carbon.</div></div><div><div class="sectiontitle"><h4>Total installed cost · editable comparison</h4><span class="kicker red">SIMULATED UNIT ECONOMICS</span></div><div class="twocol">${field('Material premium vs. alternative (%)','sku.premium',p.premium,'number',{max:30})}${field('Demo quote area (m²)','sku.area',p.area)}${field('ROCKWOOL install labour (€ / m²)','sku.labourRw',p.labourRw)}${field('Alternative install labour (€ / m²)','sku.labourAlt',p.labourAlt)}${field('ROCKWOOL waste & handling (€ / m²)','sku.wasteRw',p.wasteRw)}${field('Alternative waste & handling (€ / m²)','sku.wasteAlt',p.wasteAlt)}</div><table class="costtable"><thead><tr><th>Cost per m²</th><th>ROCKWOOL</th><th>Alternative</th></tr></thead><tbody><tr><td>Material</td><td>${money(calc.mat)}</td><td>€42</td></tr><tr><td>Labour + waste / handling</td><td>${money(p.labourRw+p.wasteRw)}</td><td>${money(p.labourAlt+p.wasteAlt)}</td></tr><tr class="emph"><td><b>Total installed</b></td><td><b>${money(calc.rw)}</b></td><td><b>${money(calc.alt)}</b></td></tr></tbody></table><div class="box ${best?'greensoft':'goldsoft'}"><strong>${best?`Illustrative installed-cost advantage: ${money((calc.alt-calc.rw)*p.area)}`:`Illustrative installed-cost gap: ${money((calc.rw-calc.alt)*p.area)}`}</strong><p>${best?'Higher material price may be offset by assumed labour / waste savings.':'Under these assumptions, ROCKWOOL remains more expensive; justify by verifiable performance where relevant.'} Neither outcome is a verified actual saving.</p></div><div class="sectiontitle"><h4>Quote-to-order tracking</h4><span class="pill ${p.ordered?'ok':p.quote?'warn':''}">${p.ordered?'Demo order confirmed':p.quote?'Quote created':'Not quoted'}</span></div><div class="box blue"><div class="data-list"><li><span>Linked project ID</span><strong>${s.project.id}</strong></li><li><span>Quote selection</span><strong>${p.selected==='stone'?'ROCKWOOL demo solution':'Generic competitor demo'}</strong></li><li><span>Quoted material value</span><strong>${money((p.selected==='stone'?calc.mat:42)*p.area)}</strong></li><li><span>Stock and lead time</span><strong>Unverified / distributor to confirm</strong></li></div></div><div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">${hbutton(p.quote?'Refresh demo quote':'Create demo quote','makeQuote','navy')}${hbutton('Confirm simulated order','orderSku','red',!p.quote?'disabled':'')}</div></div></div>${foot(p.ordered?'<strong>Order reference recorded</strong> · proceeds to installer':'Quote and order are fictional','', '')}`}
+function stage6(){const ins=s.install,complete=ins.tasks.filter(Boolean).length,percent=Math.round(complete/4*100);const tasks=[['Check approved wall assembly','Compare installed system against engineer-approved design and product instructions.'],['Inspect dimensions and pre-cut fit','Verify correct batch, dimensions and any proposed on-site adjustments.'],['Install and verify','Follow current product-specific guidance; document deviations for technical review.'],['Record waste, quality and handover','Submit offcuts for eligible recycling and capture experience feedback.']];return `<div class="mobilewrap"><div><div class="sectiontitle"><h4>Installer's QR-linked site guide</h4><span class="kicker">MOBILE EXPERIENCE</span></div><div class="phone"><div class="notch"></div><div class="phonescreen"><small>9:41　 ●●●　 ▰</small><div class="phonebanner">ROCKWOOL<br>INSTALL ASSIST</div><small>Linked project: ${s.project.id}</small><div style="font-size:12px;font-weight:850;margin-top:7px">${esc(s.project.site)}</div><div class="phone-item">Order: ${s.sku.ordered?'SIM-ORDER-0042':'Not confirmed in demo'}</div>${tasks.map((t,i)=>`<div class="phone-item ${ins.tasks[i]?'complete':''}"><span class="round">${ins.tasks[i]?'✓':''}</span><span>0${i+1} ${esc(t[0])}</span></div>`).join('')}<div style="margin-top:18px;font-size:10px;color:#6a7482">Checklist completion</div><div class="prog" style="margin-top:6px"><div style="width:${percent}%"></div></div><div style="text-align:center;color:var(--green);font-size:12px;font-weight:850;margin-top:4px">${percent}%</div></div></div></div><div><div class="sectiontitle"><h4>On-site checklist & feedback</h4><span class="kicker red">TRY THE CHECKBOXES</span></div><p style="font-size:12px;color:var(--muted)">This guide uses existing products and published technical instructions. Checking boxes simulates completion, not professional sign-off.</p>${tasks.map((t,i)=>`<label class="chekrow"><input type="checkbox" data-field="install.tasks.${i}" ${ins.tasks[i]?'checked':''}><span><b>${i+1}. ${esc(t[0])}</b><small>${esc(t[1])}</small></span></label>`).join('')}<div class="box blue" style="margin-top:13px"><div style="display:flex;justify-content:space-between;gap:10px"><b>Installation progress</b><strong>${complete}/4 complete</strong></div><div class="prog" style="margin-top:9px"><div style="width:${percent}%"></div></div></div><div class="twocol" style="margin-top:13px"><div class="field"><label>Site issue / rework</label><select data-field="install.issue">${['None','Material dimension mismatch','Late / partial delivery','Rework required','Technical query'].map(v=>`<option ${v===ins.issue?'selected':''}>${v}</option>`).join('')}</select></div><div class="field"><label>Installer feedback</label><textarea data-field="install.feedback" placeholder="What made the next job easier?">${esc(ins.feedback)}</textarea></div></div><div class="box ${ins.submitted?'greensoft':'soft'}" style="margin-top:12px"><strong>${ins.submitted?'✓ Installer feedback recorded':'Awaiting final installer feedback'}</strong><p>${ins.submitted?'Journey complete. The project record now links contractor request, distributor decision and on-site experience.':'Finish the checklist and log feedback to complete the demo.'}</p></div>${foot(ins.submitted?'<strong>Simulation complete</strong> · no actual delivery or installation':'The installer can influence repeat orders','completeInstall','Complete journey →')}</div></div>`}
+const stages=[stage0,stage1,stage2,stage3,stage4,stage5,stage6];
+function renderSteps(){byId('steps').innerHTML=steps.map((v,i)=>`<button type="button" class="steptab ${s.step===i?'active':''} ${isDone(i)?'done':''} ${i===6?'ins':''}" data-act="go" data-value="${i}" aria-current="${s.step===i?'step':'false'}" aria-label="Step ${i+1}: ${v.name}${isDone(i)?', completed':''}"><span class="stno">${isDone(i)?'✓':i+1}</span><span class="steplabel"><strong>${v.short}</strong><span class="rolehint">${['Contractor','Distributor','Installer'][v.role]}</span></span></button>`).join('');for(let i=0;i<3;i++){const active=steps[s.step].role===i;byId('role'+i).className='role '+['con','dis','ins'][i]+(active?' active':'')}}
+function renderRecord(){const p=s.project;s.forecast.qty=s.forecast.qty===undefined?null:s.forecast.qty;byId('liveCode').textContent=p.id;const items=[['Project',p.site],['Validated shortage',s.forecast.confirmed?num(approvedShort())+' m²':'Pending review'],['Factory cut-to-fit',s.cut.approved?num(pieces())+' boards requested':'Not requested'],['Rockcycle',s.cycle.scheduled?num(recovery())+' kg proposed':'Not requested'],['Compliance pack',s.docs.built?'Checklist ready':'Not prepared'],['Distributor offtake',s.offtake.created?'Draft terms':'Not drafted'],['Sales outcome',s.sku.ordered?'Simulated order recorded':'Not ordered'],['Installer',s.install.submitted?'Feedback completed':s.install.tasks.filter(Boolean).length+'/4 tasks']];byId('record').innerHTML=`<div class="box blue"><div class="notes">ONE PROJECT · CONTINUOUS HANDOVER</div><div style="font-size:20px;font-weight:900;color:var(--navy);margin-top:4px">${esc(p.id)}</div><div style="font-size:11px;color:var(--muted)">${esc(p.segment)}</div></div><ul class="data-list" style="margin-top:10px">${items.map(([a,b])=>`<li><span>${a}</span><strong>${esc(b)}</strong></li>`).join('')}</ul><div class="callout red" style="margin-bottom:0">Only one order is attributable in this journey. Forecasting, customization, compliance and SKU advice are <b>enablers</b>, not separate revenue counted repeatedly.</div>`}
+const why=[['Prevent delays; protect project conversion','The contractor acts on an early, human-approved shortage alert rather than reacting after installation stops.','Shortage response acceptance · delivery reliability'],['Reduce site effort without launching a new insulation product','Request feasible special dimensions or a pre-cut service based on existing products and available manufacturing capacity.','Cut-plan adoption · fit-related rework'],['Differentiate with circularity services','An approved backhaul may reduce the burden of handling eligible stone-wool offcuts.','Eligible returns · customer retention'],['Reduce documentation friction','Make product evidence accessible while leaving project-level compliance and engineering review to qualified professionals.','Evidence turnaround · request-to-order conversion'],['Strengthen distributor economics and relationships','A voluntary, non-exclusive purchasing relationship can create planning stability and performance-based benefits if commercially and legally viable.','Volume commitments · realised net price'],['Defend price premium at the trade counter','Compare eligible solutions against actual requirements and transparent total installed cost assumptions, then link quote to order.','Recommendation-to-order rate · net contribution'],['Drive repeat preference on the job site','Clear installation guidance and issue feedback aim to make ROCKWOOL easier to use, supporting future contractor/installer choice.','Repeat orders · rework · installation satisfaction']];
+function renderSide(){renderRecord();const a=why[s.step];byId('commercial').innerHTML=`<div class="sidetitle">${a[0]}</div><p style="font-size:11px;color:var(--muted);margin:0 0 10px">${a[1]}</p><div class="box soft"><small>KPIs to pilot-test</small><div style="font-size:12px;font-weight:780;margin-top:4px">${a[2]}</div></div><div class="callout warn" style="margin-bottom:0">Financial impact must be measured against a suitable counterfactual and checked for project/channel double counting.</div>`;byId('activity').innerHTML=`<ul class="timeline">${s.events.slice(0,7).map((v,i)=>`<li class="${i===0?'on':''}"><b>${esc(v.text)}</b><small>${esc(v.at)}</small></li>`).join('')}</ul>`}
+function render(){renderSteps();const st=steps[s.step];byId('stageHeader').innerHTML=`<div class="stageheading"><div><div class="stagepre">${['Contractor','Distributor sales','Installer'][st.role]} · Step ${s.step+1} of 7</div><h3>${st.name}</h3><p>${st.sub}</p></div><span class="kicker ${isDone(s.step)?'':'red'}">${isDone(s.step)?'✓ Step recorded':'Illustrative workflow'}</span></div>`;byId('stageBody').innerHTML=stages[s.step]();renderSide()}
+function setField(path,v){const m=path.split('.');let obj=s;for(let i=0;i<m.length-1;i++)obj=obj[m[i]];const key=m[m.length-1];const existing=obj[key];if(typeof existing==='boolean')obj[key]=!!v;else if(typeof existing==='number')obj[key]=Number.isFinite(Number(v))?Number(v):existing;else if(existing===null)obj[key]=Math.max(0,Number(v)||0);else obj[key]=String(v);if(m[0]==='project') {s.forecast.confirmed=false;s.forecast.qty=null;s.cut.approved=false;s.docs.built=false;s.sku.quote=false;s.sku.ordered=false;s.install.submitted=false}if(m[0]==='forecast'){s.forecast.confirmed=false;s.cut.approved=false;s.sku.quote=false;s.sku.ordered=false}if(m[0]==='cut'){s.cut.approved=false;s.sku.quote=false;s.sku.ordered=false}if(m[0]==='cycle')s.cycle.scheduled=false;if(m[0]==='docs')s.docs.built=false;if(m[0]==='offtake')s.offtake.created=false;if(m[0]==='sku'){s.sku.quote=false;s.sku.ordered=false;s.install.submitted=false}if(m[0]==='install')s.install.submitted=false}
+document.addEventListener('change',e=>{const el=e.target,field=el.dataset.field;if(!field)return;setField(field,el.type==='checkbox'?el.checked:el.value);render()});
+document.addEventListener('click',e=>{const btn=e.target.closest('[data-act]');if(!btn)return;const act=btn.dataset.act;const v=btn.dataset.value;if(act==='go')return nav(Number(v));if(act==='next')return nav(s.step+1);if(act==='prev')return nav(s.step-1);if(act==='reset'){if(!confirm('Reset all simulated journey inputs and actions?'))return;s=fresh();render();return toast('Demo reset')}
+ if(act==='confirmForecast'){const q=approvedShort();s.forecast.qty=q;s.forecast.confirmed=true;s.cut.approved=false;fire('Contractor reviewed and approved material gap: '+num(q)+' m²')}
+ if(act==='approveCut'){if(!s.forecast.confirmed)return toast('First confirm the shortage in service 1');s.cut.approved=true;fire('Factory cut-list request created: '+num(pieces())+' boards (not production-confirmed)')}
+ if(act==='scheduleCycle'){s.cycle.scheduled=true;fire('Rockcycle collection proposed for '+num(recovery())+' kg eligible material')}
+ if(act==='buildDocs'){if(!s.docs.selected.some(Boolean))return toast('Select at least one evidence item');s.docs.built=true;fire('Evidence checklist assembled for technical review')}
+ if(act==='createOfftake'){s.offtake.created=true;fire('Non-exclusive seven-year offtake draft recorded (no contract signed)')}
+ if(act==='chooseSku'){s.sku.selected=v;s.sku.quote=false;s.sku.ordered=false;s.install.submitted=false;fire(v==='stone'?'ROCKWOOL concept solution selected':'Generic alternative selected')}
+ if(act==='makeQuote'){s.sku.quote=true;s.sku.ordered=false;fire('Illustrative distributor quote linked to '+s.project.id)}
+ if(act==='orderSku'){if(!s.sku.quote)return toast('Create a quote first');s.sku.ordered=true;fire('Simulated order recorded; no real transaction performed')}
+ if(act==='completeInstall'){if(s.install.tasks.some(t=>!t))return toast('Complete all four checklist items first');s.install.submitted=true;fire('Installer finished checklist and recorded site feedback')}
+ if(act==='export'){const output={notice:'Prototype and all data simulated; no actual certification, delivery, financing, contract or order.',timestamp:new Date().toISOString(),project:s.project,forecast:{...s.forecast,calculatedGap:shortage()},cut:{...s.cut,estimatedBoards:pieces()},rockcycle:{...s.cycle,proposedRecoverableKg:recovery()},documents:s.docs,offtake:{...s.offtake,yearSchedule:greenSchedule()},distributor:{...s.sku,installedCost:installedCosts()},installer:s.install,activity:s.events};const blob=new Blob([JSON.stringify(output,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Friendly_ROCKWOOL_'+s.project.id+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);return toast('Downloaded simulation record (.json)')}
+ render()});
+render();
+</script>
+</body></html>
